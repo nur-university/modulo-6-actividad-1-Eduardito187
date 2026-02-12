@@ -20,17 +20,12 @@ Los datos consumidos provienen del servicio externo público JSONPlaceholder.
 
 Credenciales de Prueba
 Utilizar las siguientes credenciales para generar el token:
-{
-  "username": "eduard",
-  "password": "13011973"
-}
+{"username": "eduard", "password": "13011973"}
 
 
-Levantar con Docker:
-docker compose up --build -d
+Levantar con Docker: "docker compose up --build -d"
 
-La API estará disponible en:
-http://localhost:8000
+La API estará disponible en: "http://localhost:8000"
 
 1. Generación de Token
 POST /api/login
