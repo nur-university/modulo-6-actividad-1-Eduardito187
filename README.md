@@ -71,7 +71,8 @@ curl -X GET http://localhost:8000/api/posts -H "Authorization: DPoP  <token>"
 📸 Evidencia:
 ![Postman api-posts](post-actividad-1.png)
 
-Estructura Relevante del Proyecto
+Estructura Relevante del Proyecto--
+
     Middleware de validación JWT
         app/Presentation/Http/Middleware/KeycloakJwtMiddleware.php
     
@@ -88,9 +89,9 @@ Estructura Relevante del Proyecto
         Dockerfile
         docker-compose.yml
 
-Lo que permite ejecutar la solución directamente mediante:--
-    docker compose up --build -d
+    Lo que permite ejecutar la solución directamente mediante:
+        docker compose up --build -d
 
 
-Repositorio original:--
+Repositorio original:
 https://github.com/Eduardito187/microservicio-produccion-cocina
