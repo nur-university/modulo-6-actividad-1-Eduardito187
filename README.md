@@ -1,17 +1,12 @@
 [![Review Assignment Due Date](https://classroom.github.com/assets/deadline-readme-button-22041afd0340ce965d47ae6ef1cefeee28c7c493a6346c4f15d667ab976d596c.svg)](https://classroom.github.com/a/NkrcaSS8)
 
 
-Actividad 1 – API Gateway con JWT
-📌 Descripción
+Se implementa un API Gateway que enruta peticiones HTTP y protege endpoints mediante autenticación con (JWT).
 
-Este proyecto implementa un API Gateway que enruta peticiones HTTP y protege endpoints mediante autenticación con (JWT).
-
-Se cumplen los siguientes requerimientos:
-
-|Endpoint de Entrada|¿Requiere Token?|Acción                                                 |
-|POST /api/login	|   ❌ No       |Genera un Token en base a credenciales enviadas         |
-|GET /api/users	    |   ✅ Sí       |Redirección a https://jsonplaceholder.typicode.com/users|
-|GET /api/posts	    |   ✅ Sí       |Redirección a https://jsonplaceholder.typicode.com/posts|
+|Endpoint de Entrada|¿Requiere Token?|Acción                                   |
+|POST /api/login	|   ❌ No       |Genera un Token en base a credenciales    |
+|GET /api/users	    |   ✅ Sí       |https://jsonplaceholder.typicode.com/users|
+|GET /api/posts	    |   ✅ Sí       |https://jsonplaceholder.typicode.com/posts|
 🔐 Autenticación
 
 El proyecto utiliza Keycloak para la generación y validación de tokens JWT (DPoP Token).
@@ -30,6 +25,7 @@ Utilizar las siguientes credenciales para generar el token:
 
 🚀 Ejecución del Proyecto
 1️⃣ Levantar con Docker
+
 docker compose up --build -d
 
 2️⃣ Acceso a la API
@@ -51,7 +47,7 @@ curl -X POST http://localhost:8000/api/login \
 
 
 📸 Evidencia:
-(login-actividad-1.png)
+![Postman api-login](login-actividad-1.png)
 
 👥 2. Endpoint Protegido – Usuarios
 GET /api/users
@@ -73,7 +69,7 @@ curl -X GET http://localhost:8000/api/users \
 
 
 📸 Evidencia:
-(users-actividad-1.png)
+![Postman api-users](users-actividad-1.png)
 
 📝 3. Endpoint Protegido – Posts
 GET /api/posts
@@ -95,7 +91,7 @@ curl -X GET http://localhost:8000/api/posts \
 
 
 📸 Evidencia:
-(post-actividad-1.png)
+![Postman api-posts](post-actividad-1.png)
 
 🏗 Estructura Relevante del Proyecto
 Middleware de validación JWT
