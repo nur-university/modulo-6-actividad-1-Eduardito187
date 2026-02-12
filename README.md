@@ -84,14 +84,13 @@ Estructura Relevante del Proyecto
     Controlador de Login
         app/Presentation/Http/Controllers/LoginController.php
 
+    El proyecto incluye
+        Dockerfile
+        docker-compose.yml
 
-El proyecto incluye:
-    Dockerfile
-    docker-compose.yml
-
-Lo que permite ejecutar la solución directamente mediante:
+Lo que permite ejecutar la solución directamente mediante:--
     docker compose up --build -d
 
 
-Repositorio original:
+Repositorio original:--
 https://github.com/Eduardito187/microservicio-produccion-cocina
