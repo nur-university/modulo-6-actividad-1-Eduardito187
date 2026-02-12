@@ -13,54 +13,50 @@ Se implementa un API Gateway que enruta peticiones HTTP y protege endpoints medi
 
 
 El proyecto utiliza Keycloak para la generación y validación de tokens JWT (DPoP Token).
-Aunque el entorno Docker incluye configuración de base de datos, para esta actividad no es necesaria una base de datos, ya que:
-
-La autenticación se realiza mediante Keycloak.
-Los datos consumidos provienen del servicio externo público JSONPlaceholder.
-
-Credenciales de Prueba
-Utilizar las siguientes credenciales para generar el token:
+Aunque el entorno Docker incluye configuración de base de datos, para esta actividad no es necesaria una base de datos, ya que:--
+La autenticación se realiza mediante Keycloak, los datos consumidos provienen del servicio externo público JSONPlaceholder.
+--
+Credenciales de Prueba--
+Utilizar las siguientes credenciales para generar el token:--
 {"username": "eduard", "password": "13011973"}
 
 
-Levantar con Docker: "docker compose up --build -d"
+Levantar con Docker: "docker compose up --build -d"--
+La API estará disponible en: "http://localhost:8000"--
 
-La API estará disponible en: "http://localhost:8000"
-
-1. Generación de Token
-POST /api/login
+1. Generación de Token--
+POST /api/login--
 
 Este endpoint no requiere autenticación y devuelve un DPoP  Token válido.
 
-Ejemplo de request:
-
+Ejemplo de request:--
 curl -X POST http://localhost:8000/api/login -H "Content-Type: application/json" -d '{"username":"eduard","password":"13011973"}'
 
 
 Evidencia:
 ![Postman api-login](login-actividad-1.png)
 
-2. Endpoint Protegido – Usuarios
-GET /api/users
+2. Endpoint Protegido – Usuarios--
+GET /api/users--
 
-Requiere header:
-Authorization: DPoP  <token>
+Requiere header:--
+Authorization: DPoP  <token>--
 
-Redirige correctamente a:
-https://jsonplaceholder.typicode.com/users
+Redirige correctamente a:--
+https://jsonplaceholder.typicode.com/users--
 
 
-Ejemplo:
+Ejemplo:--
 curl -X GET http://localhost:8000/api/users -H "Authorization: DPoP  <token>"
 
 
 Evidencia:
 ![Postman api-users](users-actividad-1.png)
 
-3. Endpoint Protegido – Posts
+3. Endpoint Protegido – Posts--
 GET /api/posts
 
-Requiere header:
+Requiere header:--
 Authorization: DPoP  <token>
 
 
