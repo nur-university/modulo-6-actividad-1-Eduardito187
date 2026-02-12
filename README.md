@@ -4,10 +4,13 @@
 Se implementa un API Gateway que enruta peticiones HTTP y protege endpoints mediante autenticación con (JWT).
 
 |Endpoint de Entrada|¿Requiere Token?|Acción                                   |
+
 |POST /api/login	|   ❌ No       |Genera un Token en base a credenciales    |
+
 |GET /api/users	    |   ✅ Sí       |https://jsonplaceholder.typicode.com/users|
+
 |GET /api/posts	    |   ✅ Sí       |https://jsonplaceholder.typicode.com/posts|
-🔐 Autenticación
+
 
 El proyecto utiliza Keycloak para la generación y validación de tokens JWT (DPoP Token).
 Aunque el entorno Docker incluye configuración de base de datos, para esta actividad no es necesaria una base de datos, ya que:
@@ -33,8 +36,7 @@ La API estará disponible en:
 
 http://localhost:8000
 
-🧪 Pruebas de Funcionamiento
-🔑 1. Generación de Token
+1. Generación de Token
 POST /api/login
 
 Este endpoint no requiere autenticación y devuelve un DPoP  Token válido.
@@ -46,48 +48,39 @@ curl -X POST http://localhost:8000/api/login \
   -d '{"username":"eduard","password":"13011973"}'
 
 
-📸 Evidencia:
+Evidencia:
 ![Postman api-login](login-actividad-1.png)
 
-👥 2. Endpoint Protegido – Usuarios
+2. Endpoint Protegido – Usuarios
 GET /api/users
 
 Requiere header:
-
 Authorization: DPoP  <token>
 
-
 Redirige correctamente a:
-
 https://jsonplaceholder.typicode.com/users
 
 
 Ejemplo:
-
-curl -X GET http://localhost:8000/api/users \
-  -H "Authorization: DPoP  <token>"
+curl -X GET http://localhost:8000/api/users -H "Authorization: DPoP  <token>"
 
 
-📸 Evidencia:
+Evidencia:
 ![Postman api-users](users-actividad-1.png)
 
-📝 3. Endpoint Protegido – Posts
+3. Endpoint Protegido – Posts
 GET /api/posts
 
 Requiere header:
-
 Authorization: DPoP  <token>
 
 
 Redirige correctamente a:
-
 https://jsonplaceholder.typicode.com/posts
 
 
 Ejemplo:
-
-curl -X GET http://localhost:8000/api/posts \
-  -H "Authorization: DPoP  <token>"
+curl -X GET http://localhost:8000/api/posts -H "Authorization: DPoP  <token>"
 
 
 📸 Evidencia:
@@ -106,23 +99,15 @@ app/Presentation/Http/Controllers/ProxyController.php
 Controlador de Login
 app/Presentation/Http/Controllers/LoginController.php
 
-🐳 Contenedores Docker
+Contenedores Docker
 
 El proyecto incluye:
-
-Dockerfile
-
-docker-compose.yml
+    Dockerfile
+    docker-compose.yml
 
 Lo que permite ejecutar la solución directamente mediante:
+    docker compose up --build -d
 
-docker compose up --build -d
 
-
-No requiere configuración adicional.
-
-📦 Repositorio
-
-URL del repositorio:
-
+Repositorio original:
 https://github.com/Eduardito187/microservicio-produccion-cocina
