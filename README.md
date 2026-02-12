@@ -3,7 +3,7 @@
 
 Se implementa un API Gateway que enruta peticiones HTTP y protege endpoints mediante autenticación con (JWT).
 
-|Endpoint de Entrada|¿Requiere Token?|Acción                                   |
+|Endpoint Entrada|¿Requiere Token?|Acción                                   |
 
 |POST /api/login	|   ❌ No       |Genera un Token en base a credenciales    |
 
@@ -18,22 +18,18 @@ Aunque el entorno Docker incluye configuración de base de datos, para esta acti
 La autenticación se realiza mediante Keycloak.
 Los datos consumidos provienen del servicio externo público JSONPlaceholder.
 
-👤 Credenciales de Prueba
+Credenciales de Prueba
 Utilizar las siguientes credenciales para generar el token:
-
 {
   "username": "eduard",
   "password": "13011973"
 }
 
-🚀 Ejecución del Proyecto
-1️⃣ Levantar con Docker
 
+Levantar con Docker:
 docker compose up --build -d
 
-2️⃣ Acceso a la API
 La API estará disponible en:
-
 http://localhost:8000
 
 1. Generación de Token
@@ -43,9 +39,7 @@ Este endpoint no requiere autenticación y devuelve un DPoP  Token válido.
 
 Ejemplo de request:
 
-curl -X POST http://localhost:8000/api/login \
-  -H "Content-Type: application/json" \
-  -d '{"username":"eduard","password":"13011973"}'
+curl -X POST http://localhost:8000/api/login -H "Content-Type: application/json" -d '{"username":"eduard","password":"13011973"}'
 
 
 Evidencia:
@@ -86,20 +80,19 @@ curl -X GET http://localhost:8000/api/posts -H "Authorization: DPoP  <token>"
 📸 Evidencia:
 ![Postman api-posts](post-actividad-1.png)
 
-🏗 Estructura Relevante del Proyecto
-Middleware de validación JWT
-app/Presentation/Http/Middleware/KeycloakJwtMiddleware.php
+Estructura Relevante del Proyecto
+    Middleware de validación JWT
+        app/Presentation/Http/Middleware/KeycloakJwtMiddleware.php
+    
+    Definición de rutas protegidas
+        app/Presentation/Routes/api.php
+    
+    Controlador Proxy (API Gateway)
+        app/Presentation/Http/Controllers/ProxyController.php
+    
+    Controlador de Login
+        app/Presentation/Http/Controllers/LoginController.php
 
-Definición de rutas protegidas
-app/Presentation/Routes/api.php
-
-Controlador Proxy (API Gateway)
-app/Presentation/Http/Controllers/ProxyController.php
-
-Controlador de Login
-app/Presentation/Http/Controllers/LoginController.php
-
-Contenedores Docker
 
 El proyecto incluye:
     Dockerfile
